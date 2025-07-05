@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma Design Rules</title>
+  <style>
+    html, body {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', 'SF Pro', Arial, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+      color: #1e293b;
+    }
+    .container {
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    h1 {
+      font-size: 2.25rem;
+      font-weight: bold;
+      color: #1e293b;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.125rem;
+      color: #475569;
+      max-width: 32rem;
+      margin: 0 auto;
+    }
+    .grid {
+      display: grid;
+      gap: 2rem;
+    }
+    section {
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 24px 0 rgba(30, 41, 59, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+    .flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .flex-shrink-0 {
+      flex-shrink: 0;
+    }
+    .flex-1 {
+      flex: 1 1 0%;
+    }
+    .w-12 { width: 3rem; }
+    .h-12 { height: 3rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .p-4 { padding: 1rem; }
+    .p-6 { padding: 1.5rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-3 { margin-bottom: 0.75rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-12 { margin-bottom: 3rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-12 { margin-top: 3rem; }
+    .pt-8 { padding-top: 2rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-8 { gap: 2rem; }
+    .space-y-1 > * + * { margin-top: 0.25rem; }
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .leading-relaxed { line-height: 1.625; }
+    .font-bold { font-weight: bold; }
+    .font-semibold { font-weight: 600; }
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-4xl { font-size: 2.25rem; }
+    .text-center { text-align: center; }
+    .text-slate-800 { color: #1e293b; }
+    .text-slate-700 { color: #334155; }
+    .text-slate-600 { color: #475569; }
+    .text-slate-500 { color: #64748b; }
+    .text-slate-400 { color: #94a3b8; }
+    .text-blue-600 { color: #2563eb; }
+    .text-green-600 { color: #16a34a; }
+    .text-purple-600 { color: #7c3aed; }
+    .text-orange-600 { color: #ea580c; }
+    .text-pink-600 { color: #db2777; }
+    .text-indigo-600 { color: #4f46e5; }
+    .text-teal-600 { color: #0d9488; }
+    .text-yellow-800 { color: #854d0e; }
+    .text-red-800 { color: #991b1b; }
+    .text-blue-800 { color: #1e40af; }
+    .text-purple-800 { color: #6d28d9; }
+    .text-orange-800 { color: #c2410c; }
+    .text-pink-800 { color: #be185d; }
+    .text-indigo-800 { color: #3730a3; }
+    .text-teal-800 { color: #115e59; }
+    .text-yellow-700 { color: #b45309; }
+    .text-red-700 { color: #b91c1c; }
+    .text-blue-300 { color: #93c5fd; }
+    .text-purple-300 { color: #c4b5fd; }
+    .text-orange-300 { color: #fdba74; }
+    .text-pink-300 { color: #f9a8d4; }
+    .text-indigo-300 { color: #a5b4fc; }
+    .text-teal-300 { color: #5eead4; }
+    .text-yellow-300 { color: #fde68a; }
+    .text-red-300 { color: #fca5a5; }
+    .bg-white { background: #fff; }
+    .bg-slate-50 { background: #f8fafc; }
+    .bg-slate-100 { background: #f1f5f9; }
+    .bg-slate-200 { background: #e2e8f0; }
+    .bg-slate-300 { background: #cbd5e1; }
+    .bg-slate-700 { background: #334155; }
+    .bg-blue-100 { background: #dbeafe; }
+    .bg-blue-200 { background: #bfdbfe; }
+    .bg-blue-400 { background: #60a5fa; }
+    .bg-blue-500 { background: #3b82f6; }
+    .bg-blue-900 { background: #1e3a8a; }
+    .bg-green-100 { background: #dcfce7; }
+    .bg-green-200 { background: #bbf7d0; }
+    .bg-green-400 { background: #4ade80; }
+    .bg-green-500 { background: #22c55e; }
+    .bg-green-900 { background: #14532d; }
+    .bg-purple-50 { background: #faf5ff; }
+    .bg-purple-200 { background: #e9d5ff; }
+    .bg-purple-400 { background: #a78bfa; }
+    .bg-purple-700 { background: #7c3aed; }
+    .bg-purple-900 { background: #4c1d95; }
+    .bg-orange-50 { background: #fff7ed; }
+    .bg-orange-100 { background: #ffedd5; }
+    .bg-orange-200 { background: #fed7aa; }
+    .bg-orange-900 { background: #7c2d12; }
+    .bg-pink-100 { background: #fce7f3; }
+    .bg-pink-900 { background: #831843; }
+    .bg-indigo-100 { background: #e0e7ff; }
+    .bg-indigo-900 { background: #312e81; }
+    .bg-teal-50 { background: #f0fdfa; }
+    .bg-teal-100 { background: #ccfbf1; }
+    .bg-teal-900 { background: #134e4a; }
+    .bg-yellow-50 { background: #fefce8; }
+    .bg-yellow-900 { background: #713f12; }
+    .bg-red-50 { background: #fef2f2; }
+    .bg-red-500 { background: #ef4444; }
+    .bg-red-900 { background: #7f1d1d; }
+    .border { border-width: 1px; border-style: solid; border-color: #e2e8f0; }
+    .border-2 { border-width: 2px; border-style: solid; border-color: #3b82f6; }
+    .border-4 { border-width: 4px; border-style: solid; border-color: #22c55e; }
+    .border-blue-500 { border-color: #3b82f6; }
+    .border-green-500 { border-color: #22c55e; }
+    .border-slate-200 { border-color: #e2e8f0; }
+    .border-slate-300 { border-color: #cbd5e1; }
+    .border-slate-600 { border-color: #475569; }
+    .border-slate-700 { border-color: #334155; }
+    .border-red-700 { border-color: #b91c1c; }
+    .border-red-800 { border-color: #991b1b; }
+    .shadow-lg { box-shadow: 0 4px 24px 0 rgba(30, 41, 59, 0.08); }
+    .opacity-90 { opacity: 0.9; }
+    .rounded-full { border-radius: 9999px; }
+    .overflow-hidden { overflow: hidden; }
+    .relative { position: relative; }
+    .absolute { position: absolute; }
+    .inset-0 { top: 0; right: 0; bottom: 0; left: 0; position: absolute; }
+    .z-10 { z-index: 10; }
+    .grid-cols-1 { grid-template-columns: 1fr; }
+    .md\:grid-cols-2 { grid-template-columns: 1fr 1fr; }
+    .md\:grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    @media (min-width: 768px) {
+      .md\:grid-cols-2 { grid-template-columns: 1fr 1fr; }
+      .md\:grid-cols-3 { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .flex-col { flex-direction: column; }
+    .border-t { border-top: 1px solid #e2e8f0; }
+    /* Gradients */
+    .bg-gradient-to-br { background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); }
+    .from-blue-400 { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); }
+    .from-green-400 { background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%); }
+    .from-slate-50 { background: #f8fafc; }
+    .to-blue-50 { background: #e0e7ff; }
+    .to-purple-500 { background: #a78bfa; }
+    .to-blue-500 { background: #3b82f6; }
+    /* Utility */
+    ul { padding-left: 1.25rem; }
+    li { margin-bottom: 0.25rem; }
+    .w-2 { width: 0.5rem; }
+    .h-2 { height: 0.5rem; }
+    .bg-green-500 { background: #22c55e; }
+    .bg-red-500 { background: #ef4444; }
+    /* Custom for overlays */
+    .bg-black\/20 { background: rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+  <div class="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+    <div class="container">
+      <!-- Header -->
+      <header>
+        <h1>Figma Design Rules</h1>
+        <p>Essential principles to create better, more maintainable designs in Figma. 
+          Follow these rules to improve your design workflow and collaboration.
+        </p>
+      </header>
+      <!-- Rules Grid -->
+      <div class="grid gap-8">
+        <!-- Rule 1: Grouping Layers -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <span class="text-blue-600 font-bold text-xl">1</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Grouping Appropriate Layers Together</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Organize related elements into logical groups to maintain a clean layer structure. 
+                This makes your design easier to navigate, edit, and collaborate on.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Good Examples:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Group all navigation elements under "Navigation"
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Combine form fields and labels in "Form Elements"
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Keep all icons together in "Icons" group
+                  </li>
+                </ul>
+              </div>
+              <div class="bg-red-50 rounded-lg p-4">
+                <h3 class="font-semibold text-red-800 mb-2">❌ Avoid:</h3>
+                <ul class="space-y-2 text-sm text-red-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                    Scattered layers without logical grouping
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                    Mixing UI elements with content layers
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 2: Auto Layout -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+              <span class="text-green-600 font-bold text-xl">2</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Applying Auto Layout</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Use Auto Layout to create responsive, flexible components that automatically adjust 
+                to content changes and maintain consistent spacing.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Best Practices:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use for navigation menus, button groups, and card layouts
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Set appropriate padding and spacing values
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Choose horizontal or vertical alignment based on content
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-blue-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-blue-800 mb-2">Horizontal Auto Layout</h4>
+                  <div class="flex gap-2">
+                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 1</div>
+                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 2</div>
+                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 3</div>
+                  </div>
+                </div>
+                <div class="bg-purple-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-purple-800 mb-2">Vertical Auto Layout</h4>
+                  <div class="flex flex-col gap-2">
+                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 1</div>
+                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 2</div>
+                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 3: Gaps, Alignments & Constraints -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+              <span class="text-purple-600 font-bold text-xl">3</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Defining Gaps, Alignments & Constraints</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Establish consistent spacing, proper alignment, and responsive constraints 
+                to ensure your design scales properly across different screen sizes.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-slate-800 mb-2">Gaps</h4>
+                  <p class="text-sm text-slate-600">
+                    Use consistent spacing values (8px, 16px, 24px) between elements for visual harmony.
+                  </p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-slate-800 mb-2">Alignments</h4>
+                  <p class="text-sm text-slate-600">
+                    Align elements to create visual order and improve readability.
+                  </p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-slate-800 mb-2">Constraints</h4>
+                  <p class="text-sm text-slate-600">
+                    Set proper constraints for responsive behavior and component flexibility.
+                  </p>
+                </div>
+              </div>
+              <div class="bg-yellow-50 rounded-lg p-4">
+                <h3 class="font-semibold text-yellow-800 mb-2">💡 Pro Tips:</h3>
+                <ul class="space-y-2 text-sm text-yellow-700">
+                  <li>• Use 8px grid system for consistent spacing</li>
+                  <li>• Align text baselines for better typography</li>
+                  <li>• Set left/right constraints for horizontal scaling</li>
+                  <li>• Use top/bottom constraints for vertical scaling</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 4: Text Layer Handling -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+              <span class="text-orange-600 font-bold text-xl">4</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Handling Text Layers Properly</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Proper text layer management ensures consistency, accessibility, and easier 
+                content updates across your design system.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Text Best Practices:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use text styles for consistent typography
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Set proper line height and letter spacing
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Enable text auto-resize for dynamic content
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use semantic text layers (H1, H2, Body, Caption)
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-orange-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-orange-800 mb-2">Typography Scale</h4>
+                  <div class="space-y-2">
+                    <div class="text-2xl font-bold">Heading 1</div>
+                    <div class="text-xl font-semibold">Heading 2</div>
+                    <div class="text-base">Body Text</div>
+                    <div class="text-sm text-slate-500">Caption</div>
+                  </div>
+                </div>
+                <div class="bg-orange-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-orange-800 mb-2">Text Properties</h4>
+                  <div class="space-y-1 text-sm">
+                    <div>• Font Family: Inter, SF Pro</div>
+                    <div>• Line Height: 1.5 (150%)</div>
+                    <div>• Letter Spacing: -0.01em</div>
+                    <div>• Auto Resize: Enabled</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 5: Background Images -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center">
+              <span class="text-pink-600 font-bold text-xl">5</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Using Background Images</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Properly implement background images to enhance visual appeal while maintaining 
+                performance and accessibility standards.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Implementation Guidelines:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use appropriate fill modes (Fill, Fit, Crop, Tile)
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Set proper image constraints and scaling
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Ensure text remains readable over backgrounds
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Optimize image file sizes for performance
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg p-6 text-white relative overflow-hidden">
+                  <div class="absolute inset-0 bg-black/20"></div>
+                  <div class="relative z-10">
+                    <h4 class="font-semibold mb-2">Hero Section</h4>
+                    <p class="text-sm opacity-90">Background with overlay for text readability</p>
+                  </div>
+                </div>
+                <div class="bg-gradient-to-br from-green-400 to-blue-500 rounded-lg p-6 text-white">
+                  <h4 class="font-semibold mb-2">Card Background</h4>
+                  <p class="text-sm opacity-90">Subtle gradient for visual interest</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 6: Strokes Instead of Lines -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center">
+              <span class="text-indigo-600 font-bold text-xl">6</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Using Strokes Instead of Lines for Borders</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Apply strokes to shapes and frames instead of using line elements for borders. 
+                This approach provides better control and consistency in your designs.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Why Use Strokes:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Better control over border radius and styling
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Easier to maintain and update consistently
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    More flexible for responsive design
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Better integration with design systems
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="border-2 border-blue-500 rounded-lg p-4 text-center">
+                  <div class="text-blue-600 font-semibold">Button</div>
+                  <div class="text-xs text-slate-500 mt-1">2px stroke</div>
+                </div>
+                <div class="border border-slate-300 rounded-lg p-4 text-center">
+                  <div class="text-slate-700 font-semibold">Card</div>
+                  <div class="text-xs text-slate-500 mt-1">1px stroke</div>
+                </div>
+                <div class="border-4 border-green-500 rounded-lg p-4 text-center">
+                  <div class="text-green-600 font-semibold">Focus State</div>
+                  <div class="text-xs text-slate-500 mt-1">4px stroke</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Rule 7: Contextual Layer Naming -->
+        <section>
+          <div class="flex items-start gap-4">
+            <div class="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-lg flex items-center justify-center">
+              <span class="text-teal-600 font-bold text-xl">7</span>
+            </div>
+            <div class="flex-1">
+              <h2 class="text-2xl font-semibold text-slate-800 mb-3">Contextually Naming Layers</h2>
+              <p class="text-slate-600 mb-4 leading-relaxed">
+                Use descriptive, semantic names for your layers to improve collaboration, 
+                maintainability, and overall design workflow efficiency.
+              </p>
+              <div class="bg-slate-50 rounded-lg p-4 mb-4">
+                <h3 class="font-semibold text-slate-800 mb-2">✅ Naming Conventions:</h3>
+                <ul class="space-y-2 text-sm text-slate-600">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use descriptive names: "Primary Button" instead of "Rectangle 1"    
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Include state information: "Button/Hover", "Button/Pressed"
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Use consistent prefixes: "Icon/", "Text/", "Container/"
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                    Group related elements: "Navigation/Logo", "Navigation/Menu"
+                  </li>
+                </ul>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-teal-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-teal-800 mb-2">✅ Good Names</h4>
+                  <div class="space-y-1 text-sm text-teal-700">
+                    <div>• Header/Navigation</div>
+                    <div>• Button/Primary/Default</div>
+                    <div>• Card/Product/Image</div>
+                    <div>• Icon/Arrow/Right</div>
+                    <div>• Text/Heading/H1</div>
+                  </div>
+                </div>
+                <div class="bg-red-50 rounded-lg p-4">
+                  <h4 class="font-semibold text-red-800 mb-2">❌ Avoid</h4>
+                  <div class="space-y-1 text-sm text-red-700">
+                    <div>• Rectangle 1</div>
+                    <div>• Group 2</div>
+                    <div>• Copy</div>
+                    <div>• Untitled</div>
+                    <div>• Frame 1</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- Footer -->
+      <footer class="text-center mt-12 pt-8 border-t border-slate-200">
+        <p class="text-slate-600">
+          Follow these rules to create better, more maintainable Figma designs. 
+          Happy designing! 🎨
+        </p>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
