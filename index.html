@@ -5,50 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Figma Design Rules</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    
     html, body {
       min-height: 100vh;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', 'SF Pro', Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
       background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
       color: #1e293b;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     .container {
       max-width: 56rem;
       margin: 0 auto;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     }
     header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
     h1 {
-      font-size: 2.25rem;
-      font-weight: bold;
+      font-size: 3.5rem;
+      font-weight: 800;
       color: #1e293b;
       margin-bottom: 1rem;
+      background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.025em;
     }
     header p {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       color: #475569;
-      max-width: 32rem;
+      max-width: 36rem;
       margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.7;
     }
     .grid {
       display: grid;
-      gap: 2rem;
+      gap: 2.5rem;
     }
     section {
       background: #fff;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 24px 0 rgba(30, 41, 59, 0.08);
+      border-radius: 1rem;
+      padding: 2rem;
+      box-shadow: 0 10px 40px 0 rgba(30, 41, 59, 0.1);
       border: 1px solid #e2e8f0;
+      will-change: transform, box-shadow;
+    }
+    section:hover {
+      box-shadow: 0 25px 80px 0 rgba(30, 41, 59, 0.15);
     }
     .flex {
       display: flex;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 1.5rem;
     }
     .flex-shrink-0 {
       flex-shrink: 0;
@@ -56,10 +72,15 @@
     .flex-1 {
       flex: 1 1 0%;
     }
-    .w-12 { width: 3rem; }
-    .h-12 { height: 3rem; }
+    .w-12 { width: 4rem; }
+    .h-12 { height: 4rem; }
     .rounded-lg { border-radius: 0.5rem; }
     .rounded-xl { border-radius: 0.75rem; }
+    .flex.items-center.justify-center {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     .p-4 { padding: 1rem; }
     .p-6 { padding: 1.5rem; }
     .mb-2 { margin-bottom: 0.5rem; }
@@ -69,21 +90,24 @@
     .mt-1 { margin-top: 0.25rem; }
     .mt-12 { margin-top: 3rem; }
     .pt-8 { padding-top: 2rem; }
-    .gap-2 { gap: 0.5rem; }
-    .gap-4 { gap: 1rem; }
-    .gap-8 { gap: 2rem; }
+    .gap-2 { gap: 0.75rem; }
+    .gap-4 { gap: 1.5rem; }
+    .gap-8 { gap: 2.5rem; }
     .space-y-1 > * + * { margin-top: 0.25rem; }
     .space-y-2 > * + * { margin-top: 0.5rem; }
-    .leading-relaxed { line-height: 1.625; }
-    .font-bold { font-weight: bold; }
+    .leading-relaxed { line-height: 1.7; }
+    .font-bold { font-weight: 700; }
     .font-semibold { font-weight: 600; }
+    .font-medium { font-weight: 500; }
     .text-xs { font-size: 0.75rem; }
     .text-sm { font-size: 0.875rem; }
+    .shadow-sm { box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); }
     .text-base { font-size: 1rem; }
     .text-lg { font-size: 1.125rem; }
-    .text-xl { font-size: 1.25rem; }
-    .text-2xl { font-size: 1.5rem; }
-    .text-4xl { font-size: 2.25rem; }
+    .text-lg.font-medium { font-weight: 500; }
+    .text-xl { font-size: 1.5rem; }
+    .text-2xl { font-size: 1.75rem; }
+    .text-4xl { font-size: 2.5rem; }
     .text-center { text-align: center; }
     .text-slate-800 { color: #1e293b; }
     .text-slate-700 { color: #334155; }
@@ -91,6 +115,7 @@
     .text-slate-500 { color: #64748b; }
     .text-slate-400 { color: #94a3b8; }
     .text-blue-600 { color: #2563eb; }
+    .text-white { color: #ffffff; }
     .text-green-600 { color: #16a34a; }
     .text-purple-600 { color: #7c3aed; }
     .text-orange-600 { color: #ea580c; }
@@ -117,39 +142,119 @@
     .text-red-300 { color: #fca5a5; }
     .bg-white { background: #fff; }
     .bg-slate-50 { background: #f8fafc; }
+    .bg-slate-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+    }
     .bg-slate-100 { background: #f1f5f9; }
     .bg-slate-200 { background: #e2e8f0; }
     .bg-slate-300 { background: #cbd5e1; }
     .bg-slate-700 { background: #334155; }
     .bg-blue-100 { background: #dbeafe; }
+    .bg-blue-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(59, 130, 246, 0.1);
+    }
+    .bg-blue-50 { background: #eff6ff; }
+    .bg-blue-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(59, 130, 246, 0.1);
+    }
     .bg-blue-200 { background: #bfdbfe; }
+    .bg-blue-200.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(59, 130, 246, 0.1);
+    }
     .bg-blue-400 { background: #60a5fa; }
     .bg-blue-500 { background: #3b82f6; }
+    .bg-blue-600 { background: #2563eb; }
     .bg-blue-900 { background: #1e3a8a; }
     .bg-green-100 { background: #dcfce7; }
+    .bg-green-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(34, 197, 94, 0.1);
+    }
     .bg-green-200 { background: #bbf7d0; }
+    .bg-green-200.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(34, 197, 94, 0.1);
+    }
     .bg-green-400 { background: #4ade80; }
     .bg-green-500 { background: #22c55e; }
     .bg-green-900 { background: #14532d; }
     .bg-purple-50 { background: #faf5ff; }
+    .bg-purple-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(124, 58, 237, 0.1);
+    }
     .bg-purple-200 { background: #e9d5ff; }
+    .bg-purple-200.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(124, 58, 237, 0.1);
+    }
+    .bg-purple-100 { background: #f3e8ff; }
+    .bg-purple-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(124, 58, 237, 0.1);
+    }
     .bg-purple-400 { background: #a78bfa; }
+    .bg-purple-400.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(124, 58, 237, 0.1);
+    }
     .bg-purple-700 { background: #7c3aed; }
+    .bg-purple-600 { background: #9333ea; }
     .bg-purple-900 { background: #4c1d95; }
     .bg-orange-50 { background: #fff7ed; }
+    .bg-orange-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(249, 115, 22, 0.1);
+    }
     .bg-orange-100 { background: #ffedd5; }
+    .bg-orange-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(249, 115, 22, 0.1);
+    }
     .bg-orange-200 { background: #fed7aa; }
+    .bg-orange-200.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(249, 115, 22, 0.1);
+    }
     .bg-orange-900 { background: #7c2d12; }
     .bg-pink-100 { background: #fce7f3; }
+    .bg-pink-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(219, 39, 119, 0.1);
+    }
     .bg-pink-900 { background: #831843; }
     .bg-indigo-100 { background: #e0e7ff; }
+    .bg-indigo-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(79, 70, 229, 0.1);
+    }
     .bg-indigo-900 { background: #312e81; }
     .bg-teal-50 { background: #f0fdfa; }
+    .bg-teal-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(13, 148, 136, 0.1);
+    }
     .bg-teal-100 { background: #ccfbf1; }
+    .bg-teal-100.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(13, 148, 136, 0.1);
+    }
     .bg-teal-900 { background: #134e4a; }
     .bg-yellow-50 { background: #fefce8; }
+    .bg-yellow-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(245, 158, 11, 0.1);
+    }
     .bg-yellow-900 { background: #713f12; }
     .bg-red-50 { background: #fef2f2; }
+    .bg-red-50.rounded-lg {
+      border-radius: 0.75rem;
+      box-shadow: inset 0 2px 4px 0 rgba(239, 68, 68, 0.1);
+    }
     .bg-red-500 { background: #ef4444; }
     .bg-red-900 { background: #7f1d1d; }
     .border { border-width: 1px; border-style: solid; border-color: #e2e8f0; }
@@ -182,8 +287,16 @@
     .border-t { border-top: 1px solid #e2e8f0; }
     /* Gradients */
     .bg-gradient-to-br { background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); }
-    .from-blue-400 { background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%); }
-    .from-green-400 { background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%); }
+    .from-blue-400.to-purple-500 { 
+      background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .from-green-400.to-blue-500 { 
+      background: linear-gradient(135deg, #4ade80 0%, #3b82f6 100%);
+      position: relative;
+      overflow: hidden;
+    }
     .from-slate-50 { background: #f8fafc; }
     .to-blue-50 { background: #e0e7ff; }
     .to-purple-500 { background: #a78bfa; }
@@ -197,6 +310,16 @@
     .bg-red-500 { background: #ef4444; }
     /* Custom for overlays */
     .bg-black\/20 { background: rgba(0,0,0,0.2); }
+    
+    /* Performance optimizations */
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
   </style>
 </head>
 <body>
@@ -286,20 +409,20 @@
                 </ul>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-blue-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-blue-800 mb-2">Horizontal Auto Layout</h4>
-                  <div class="flex gap-2">
-                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 1</div>
-                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 2</div>
-                    <div class="bg-blue-200 px-3 py-1 rounded text-xs">Button 3</div>
+                <div class="bg-white rounded-lg p-4" style="box-shadow: 0 2px 8px 0 rgba(30,41,59,0.06);">
+                  <h4 class="font-semibold text-blue-700 mb-4" style="font-size:1.35rem;">Horizontal Auto Layout</h4>
+                  <div class="flex gap-4">
+                    <button style="background:#2563eb;color:#fff;padding:0.75rem 2rem;border:none;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);cursor:pointer;transition:background 0.2s;">Button 1</button>
+                    <button style="background:#2563eb;color:#fff;padding:0.75rem 2rem;border:none;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);cursor:pointer;transition:background 0.2s;">Button 2</button>
+                    <button style="background:#2563eb;color:#fff;padding:0.75rem 2rem;border:none;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);cursor:pointer;transition:background 0.2s;">Button 3</button>
                   </div>
                 </div>
-                <div class="bg-purple-50 rounded-lg p-4">
-                  <h4 class="font-semibold text-purple-800 mb-2">Vertical Auto Layout</h4>
-                  <div class="flex flex-col gap-2">
-                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 1</div>
-                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 2</div>
-                    <div class="bg-purple-200 px-3 py-1 rounded text-xs">Menu Item 3</div>
+                <div class="bg-white rounded-lg p-4" style="box-shadow: 0 2px 8px 0 rgba(30,41,59,0.06);">
+                  <h4 class="font-semibold text-purple-700 mb-4" style="font-size:1.35rem;">Vertical Auto Layout</h4>
+                  <div class="flex flex-col gap-3 w-full">
+                    <div style="background:#9333ea;color:#fff;padding:0.9rem 1.5rem;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);width:100%;text-align:left;">Menu Item 1</div>
+                    <div style="background:#9333ea;color:#fff;padding:0.9rem 1.5rem;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);width:100%;text-align:left;">Menu Item 2</div>
+                    <div style="background:#9333ea;color:#fff;padding:0.9rem 1.5rem;border-radius:0.75rem;font-size:1rem;font-weight:600;box-shadow:0 1px 2px 0 rgba(0,0,0,0.05);width:100%;text-align:left;">Menu Item 3</div>
                   </div>
                 </div>
               </div>
