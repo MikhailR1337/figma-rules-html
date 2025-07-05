@@ -83,6 +83,9 @@
       align-items: flex-start;
       gap: 1rem;
     }
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
     @media (min-width: 768px) {
       .flex {
         gap: 1.5rem;
@@ -315,6 +318,10 @@
     }
     .flex-col { flex-direction: column; }
     .border-t { border-top: 1px solid #e2e8f0; }
+    .hidden { display: none; }
+    @media (min-width: 768px) {
+      .md\:block { display: block; }
+    }
     /* Gradients */
     .bg-gradient-to-br { background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); }
     .from-blue-400.to-purple-500 { 
